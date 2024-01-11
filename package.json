@@ -20,6 +20,6 @@
   "dependencies": {
     "@neondatabase/serverless": "^0.7.2",
     "drizzle-orm": "^0.29.3",
-    "hono": "^3.12.2"
+    "hono": "^3.11.7"
   }
 }
