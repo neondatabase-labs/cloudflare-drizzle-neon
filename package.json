@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "deploy": "wrangler deploy",
-    "start": "wrangler dev",
+    "dev": "wrangler dev",
     "db:generate": "drizzle-kit generate:pg",
     "db:migrate": "tsx migrate.ts"
   },

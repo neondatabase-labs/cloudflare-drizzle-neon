@@ -42,7 +42,7 @@ INSERT INTO products (name, price, description) VALUES
 6. Run the following command to start the server:
 
 ```bash
-npm run start
+npm run dev
 ```
 
 7. Open the browser at `http://localhost:8787` to see the list of products.
