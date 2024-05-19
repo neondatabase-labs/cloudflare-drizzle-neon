@@ -5,6 +5,7 @@ This is a simple API of a serverless API using Cloudflare Workers, Drizzle ORM a
 ## Set up locally
 
 You will need the following:
+
 - A [Cloudflare account](https://dash.cloudflare.com) and the wrangler CLI installed
 - A [Neon account](https://console.neon.tech) and a project
 
@@ -15,6 +16,7 @@ git clone https://github.com/neondatabase/cloudflare-drizzle-neon.git
 cd neon-cloudflare-drizzle
 npm install
 ```
+
 2. Copy the `.dev.vars` file by running the following command:
 
 ```bash
@@ -26,8 +28,9 @@ cp .dev.vars.example .dev.vars
 4. Run the following command to apply the existing database migrations located in the `/drizzle` directory:
 
 ```bash
-npm run migrate
+npm run db:migrate
 ```
+
 5. In the Neon console, run the following query in the Neon's SQL editor:
 
 ```sql
