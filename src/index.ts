@@ -1,7 +1,9 @@
-import { drizzle } from 'drizzle-orm/neon-serverless';
-import { Pool } from '@neondatabase/serverless';
+import { NeonHttpDatabase, drizzle } from 'drizzle-orm/neon-http';
+import { neon } from '@neondatabase/serverless';
+import * as schema from './db/schema';
 import { products } from './db/schema';
 import { Hono } from 'hono';
+import { createMiddleware } from 'hono/factory';
 
 export type Env = {
   DATABASE_URL: string;
@@ -9,13 +11,21 @@ export type Env = {
 
 const app = new Hono<{ Bindings: Env }>();
 
-app.get('/', async (c) => {
+declare module 'hono' {
+  interface HonoRequest {
+    db: NeonHttpDatabase<typeof schema>;
+  }
+}
+
+const injectDB = createMiddleware(async (c, next) => {
+  const sql = neon(c.env.DATABASE_URL);
+  c.req.db = drizzle(sql);
+  await next();
+});
+
+app.get('/', injectDB, async (c) => {
   try {
-    const client = new Pool({ connectionString: c.env.DATABASE_URL });
-
-    const db = drizzle(client);
-
-    const result = await db.select().from(products);
+    const result = await c.req.db.select().from(products);
 
     return c.json({
       result,

@@ -11,7 +11,7 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20231218.0",
     "dotenv": "^16.3.1",
-    "drizzle-kit": "^0.20.10",
+    "drizzle-kit": "^0.21.2",
     "postgres": "^3.4.3",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3",
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.7.2",
-    "drizzle-orm": "^0.29.3",
-    "hono": "^3.12.2"
+    "drizzle-orm": "^0.30.10",
+    "hono": "^4.3.8"
   }
 }
